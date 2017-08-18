@@ -24,6 +24,7 @@ const Button = glamorous.button({
 	borderRadius: 7,
 	color: 'white',
 	outline: 'none',
+	cursor: 'pointer',
 })
 
 const Clear = glamorous(Button)({

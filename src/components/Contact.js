@@ -8,6 +8,7 @@ const ContactDiv = glamorous.div({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
+  cursor: 'pointer',
 }, ({ active }) => ({
 	color: active ? 'white' : '#dedfe0'
 }));
