@@ -52,16 +52,19 @@ const Submit = glamorous(Button)({
 	}}
 })
 
-const ButtonRow = glamorous.div({
-	marginTop: 10,
-})
+const Warning = glamorous.div({
+	marginTop: 3,
+}, ({ show }) => ({ color: show ? '#a33939' : 'white' }));
+
+const ButtonRow = glamorous.div({ marginTop: 10 })
 
 const Label = glamorous.div({ fontWeight: 'bold', marginRight: 10, marginBottom: 5 })
 
 class MessageText extends React.Component {
 
 	onChange = (e) => {
-		this.props.setMessage(e.target.value)
+		let max = e.target.value.slice(0, 160)
+		this.props.setMessage(max)
 	}
 
 	clear = (e) => {
@@ -80,6 +83,7 @@ class MessageText extends React.Component {
       <Container>
       	<Label> Message Text</Label>
         <TextArea rows='5' cols='50' onChange={this.onChange} value={message}/>
+        <Warning show={ message.length === 160 }>Message is at max length of 160 chars</Warning>
         <ButtonRow>
         	<Clear onClick={this.clear}>Clear Message</Clear>
         	<Submit onClick={ this.sendMessage } disabled={ message === '' }>Send Message</Submit>
